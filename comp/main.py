@@ -24,6 +24,7 @@ def parse():
 
 
 def out(cached):
+    print len(cached)
     for idx, server in enumerate(cached):
         print idx
         print ' '.join(map(str, server))
