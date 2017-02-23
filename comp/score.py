@@ -3,7 +3,7 @@ def score(lats, clats, reqs, sol):
     rs = 0
     for (v, e, r) in reqs:
         m = lats[e]
-        for c, l in clats[e].iteritems():
+        for l, c in clats[e]:
             if((v in sol[c]) and (l < m)):
                 m = l
         s += r*(lats[e] - m)
