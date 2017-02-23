@@ -3,7 +3,12 @@
 def parse():
     pass
 
-def out():
+def out(cached):
+    for idx, server in enumerate(cached):
+        print idx
+        print ' '.join(map(str, server))
+
+def greedy():
     pass
 
 def main():
