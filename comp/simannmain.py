@@ -5,6 +5,7 @@ import heapq
 import sys
 
 from simann import simann
+from greedy import greedy
 from score import score
 
 V = E = R = C = X = 0
@@ -39,7 +40,8 @@ def out(cached):
 
 def main():
     sizes, latencies, cache_latencies, requests = parse()
-    servers = simann(V, E, R, C, X, sizes, latencies, cache_latencies, requests)
+    firstsol = greedy(C, X, sizes, latencies, cache_latencies, requests)
+    servers = simann(firstsol, V, E, R, C, X, sizes, latencies, cache_latencies, requests)
     out(servers)
     print >> sys.stderr, score(latencies, cache_latencies, requests, servers)
 
