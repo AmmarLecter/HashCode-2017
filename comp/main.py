@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import sys
+
 from greedy import greedy
 from score import score
 
@@ -37,6 +39,6 @@ def main():
     sizes, latencies, cache_latencies, requests = parse()
     servers = greedy(C, X, sizes, latencies, cache_latencies, requests)
     out(servers)
-    print score(latencies, cache_latencies, requests, servers)
+    print >> sys.stderr, score(latencies, cache_latencies, requests, servers)
 
 if __name__ == "__main__": main()
