@@ -1,15 +1,18 @@
 #!/usr/bin/env python
 
+import heapq
+
 V = E = R = C = X = 0
 
 def read_line():
     return [int(i) for i in raw_input().split()]
 
 def parse():
+    global V, E, R, C, X
     V, E, R, C, X = read_line()
     latencies = [0] * E
     cache_latencies = [{} for _ in xrange(E)]
-    requests = [{} for _ in xrange(E)]
+    requests = []
     sizes = read_line()
     for i in xrange(E):
         l, K = read_line()
@@ -19,17 +22,14 @@ def parse():
             cache_latencies[i][c] = L
     for _ in xrange(R):
         v, e, n = read_line()
-        requests[e][v] = n
+        requests.append((v, e, n))
     return sizes, latencies, cache_latencies, requests
 
 
 def out(cached):
     for idx, server in enumerate(cached):
-        print idx
+        print idx,
         print ' '.join(map(str, server))
-
-def greedy():
-    pass
 
 def main():
     sizes, latencies, cache_latencies, requests = parse()
@@ -37,6 +37,7 @@ def main():
     print latencies
     print cache_latencies
     print requests
-    out()
+    servers = greedy(sizes, latencies, cache_latencies, requests)
+    out(servers)
 
 if __name__ == "__main__": main()
