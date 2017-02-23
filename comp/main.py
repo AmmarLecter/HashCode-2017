@@ -14,7 +14,7 @@ def parse():
     global V, E, R, C, X
     V, E, R, C, X = read_line()
     latencies = [0] * E
-    cache_latencies = [{} for _ in xrange(E)]
+    cache_latencies = [[] for _ in xrange(E)]
     requests = []
     sizes = read_line()
     for i in xrange(E):
@@ -22,7 +22,8 @@ def parse():
         latencies[i] = l
         for j in xrange(K):
             c, L = read_line()
-            cache_latencies[i][c] = L
+            cache_latencies[i].append((L, c))
+        cache_latencies[i].sort()
     for _ in xrange(R):
         v, e, n = read_line()
         requests.append((v, e, n))
