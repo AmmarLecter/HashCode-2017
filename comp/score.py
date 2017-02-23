@@ -6,4 +6,4 @@ def score(lats, clats, reqs, sol):
             if((v in sol[c]) and (l < m)):
                 m = l
         s += r*(lats[e] - m)
-    print s
+    return s
