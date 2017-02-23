@@ -6,7 +6,7 @@ from score import score
 def simann(firstsol, V, E, R, C, X, sizes, latencies, cache_latencies, requests):
     Y = 10
     N = 1000
-    best_score = score(latencies, cache_latecies, requests, firstsol)
+    best_score = score(latencies, cache_latencies, requests, firstsol)
     best_sol = [set() for x in range(C)]
 
     def cache_size(cacheid):
@@ -35,7 +35,7 @@ def simann(firstsol, V, E, R, C, X, sizes, latencies, cache_latencies, requests)
             return True
 
     for i in range(Y):
-        caches = [set() for x in firstsol]
+        caches = [set(x) for x in firstsol]
         for j in range(N):
             prevsol = [set(x) for x in caches]
 
