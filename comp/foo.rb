@@ -1,16 +1,16 @@
 require 'parallel'
 require 'open3'
 
-times = 1..5
-#testcases = ['kittens.in', 'me_at_the_zoo.in', 'statement.in', 'trending_today.in', 'videos_worth_spreading.in']
-testcases = ['statement.in']
+times = 1..100
+testcases = ['me_at_the_zoo.in']
 
 executions = times.zip(testcases.cycle)
 
-results = Parallel.map(executions, in_threads: `cat /proc/cpuinfo | grep 'core id'`.to_i) { |testcase|
+results = Parallel.map(executions, in_threads: `cat /proc/cpuinfo | grep 'core id' | wc`.to_i) { |testcase|
 	testcase = testcase[1]
+	STDERR.puts testcase	
 	i, o, e = Open3::popen3("python simannmain.py < #{testcase}")
-	
+
 	[testcase, o.read, e.read]
 }
 
