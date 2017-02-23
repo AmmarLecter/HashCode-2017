@@ -2,7 +2,7 @@
 
 import sys
 
-from greedy import greedy
+from greedy_3 import greedy
 from score import score
 
 V = E = R = C = X = 0
@@ -38,7 +38,7 @@ def out(cached):
 
 def main():
     sizes, latencies, cache_latencies, requests = parse()
-    servers = greedy(C, X, sizes, latencies, cache_latencies, requests)
+    servers = greedy(float(sys.argv[1]), R, C, X, sizes, latencies, cache_latencies, requests)
     out(servers)
     print >> sys.stderr, score(latencies, cache_latencies, requests, servers)
 

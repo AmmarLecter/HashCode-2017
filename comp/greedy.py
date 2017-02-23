@@ -9,7 +9,7 @@ def greedy(C, X, sizes, latencies, cache_latencies, requests):
     for r in requests:
         v, e, n = r
         size = sizes[v]
-        heapq.heappush(heap, (n / size, e, v))
+        heapq.heappush(heap, (n, e, v))
     while(len(heap) > 0):
         _, endpoint, video_id = heapq.heappop(heap)
         size = sizes[video_id]
