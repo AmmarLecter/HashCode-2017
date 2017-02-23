@@ -1,6 +1,6 @@
 import heapq
 
-def greedy(sizes, latencies, cache_latencies, requests):
+def greedy(C, X, sizes, latencies, cache_latencies, requests):
     # Initializations
     heap = []
     available = [X] * C

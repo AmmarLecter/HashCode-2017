@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-import heapq
+from greedy import greedy
+from score import score
 
 V = E = R = C = X = 0
 
@@ -34,11 +35,8 @@ def out(cached):
 
 def main():
     sizes, latencies, cache_latencies, requests = parse()
-    print sizes
-    print latencies
-    print cache_latencies
-    print requests
-    servers = greedy(sizes, latencies, cache_latencies, requests)
+    servers = greedy(C, X, sizes, latencies, cache_latencies, requests)
     out(servers)
+    print score(latencies, cache_latencies, requests, servers)
 
 if __name__ == "__main__": main()
