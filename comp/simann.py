@@ -1,4 +1,5 @@
 import fileinput
+import sys
 
 from random import randint, random
 from score import score
@@ -41,6 +42,7 @@ def simann(firstsol, V, E, R, C, X, sizes, latencies, cache_latencies, requests)
     for i in range(Y):
         caches = [set(x) for x in firstsol]
         for j in range(N):
+            print >> sys.stderr, j
             prevsol = [set(x) for x in caches]
 
             rv = randint(0, V-1)
